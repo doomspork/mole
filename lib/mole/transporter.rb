@@ -1,4 +1,4 @@
-require 'mole/transport/plain'
+require 'mole/transport/basic_http'
 
 module Mole
   class Transporter
