@@ -4,6 +4,7 @@ require 'coveralls'
 require 'simplecov'
 require 'rspec/its'
 require 'rr'
+require 'webmock/rspec'
 
 require 'mole'
 
