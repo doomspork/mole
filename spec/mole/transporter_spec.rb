@@ -3,7 +3,7 @@ require 'spec_helper'
 module Mole
   describe Transporter do
     context 'with basic http transport' do
-      subject { Transporter.new(:basic) }
+      subject { Transporter.new(:basic_http) }
       its(:transport) { is_expected.to be_a Transport::BasicHttp }
     end
 

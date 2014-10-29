@@ -1,4 +1,4 @@
-require 'mole/transport/basic_http'
+require 'orwell/mole/transport/basic_http'
 
 module Mole
   class Transporter
@@ -16,7 +16,7 @@ module Mole
 
     def lookup(transport)
       case transport
-      when :basic
+      when :basic_http
         Transport::BasicHttp.new(config_hash)
       when :sidekiq
         raise NotImplementedError

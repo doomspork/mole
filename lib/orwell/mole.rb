@@ -1,8 +1,8 @@
-require 'mole/version'
-require 'mole/config'
-require 'mole/event'
-require 'mole/transporter'
-require 'mole/client'
+require 'orwell/mole/version'
+require 'orwell/mole/config'
+require 'orwell/mole/event'
+require 'orwell/mole/transporter'
+require 'orwell/mole/client'
 
 module Mole
   def self.config

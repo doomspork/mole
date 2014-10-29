@@ -53,7 +53,7 @@ module Mole
       end
 
       context '#method' do
-        its(:method) { is_expected.to eql :basic }
+        its(:method) { is_expected.to eql :basic_http }
 
         context 'when overridden' do
           before do
@@ -61,7 +61,7 @@ module Mole
           end
 
           after do
-            Mole.config {|c| c.method = :basic }
+            Mole.config {|c| c.method = :basic_http }
           end
 
           its(:method) { is_expected.to eql :mock }

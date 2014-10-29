@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mole/version'
+require 'orwell/mole/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'mole'
+  spec.name          = 'orwell-mole'
   spec.version       = Mole::VERSION
   spec.authors       = ['Sean Callan']
   spec.email         = ['seancallan@gmail.com']
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Mole allows developers to send events from within their code directly to Orwell.'  
   spec.homepage      = 'http://www.orwell.io'
   spec.license       = 'MIT'
-  spec.files         = ['README.md'] + Dir['lib/**/*'] 
+  spec.files         = ['README.md', 'LICENSE'] + Dir['lib/**/*'] 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
@@ -24,5 +24,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-its',  '~> 1.0'
   spec.add_development_dependency 'simplecov',  '~> 0.9'
   spec.add_development_dependency 'webmock',    '~> 1.18'
-
 end

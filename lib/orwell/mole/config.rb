@@ -1,4 +1,4 @@
-require 'errors/missing_api_token_error'
+require 'orwell/mole/errors/missing_api_token_error'
 
 module Mole
   class Config
@@ -27,7 +27,7 @@ module Mole
     end
 
     def method
-      @method || :basic
+      @method || :basic_http
     end
 
     def port

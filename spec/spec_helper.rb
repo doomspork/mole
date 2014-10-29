@@ -14,7 +14,7 @@ SimpleCov.start do
   minimum_coverage(95.0)
 end
 
-require 'mole'
+require 'orwell/mole'
 
 Dir['spec/support/**/*.rb'].each { |f| require f }
 
