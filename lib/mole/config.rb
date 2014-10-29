@@ -2,7 +2,7 @@ require 'errors/missing_api_token_error'
 
 module Mole
   class Config
-    DEFAULT_HOST = 'http://www.orwell.io'
+    DEFAULT_HOST = 'api.orwell.io'
     DEFAULT_POST = 80
     DEFAULT_API_VERSION = '0.1.0'
 
@@ -33,6 +33,12 @@ module Mole
     def port
       @port || DEFAULT_POST
     end
+
+    def reset!
+      @api_token, @api_version, @host, @logger, @method, @port = nil
+    end
+
+    private
 
     def default_logger
       unless @default_logger

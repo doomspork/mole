@@ -7,6 +7,12 @@ module Mole
       its(:transport) { is_expected.to be_a Transport::BasicHttp }
     end
 
+    context 'with sidekiq transport' do
+      it 'will be Not Implemented' do
+        expect { Transporter.new(:sidekiq) }.to raise_error NotImplementedError
+      end
+    end
+
     describe '#perform' do
       class MockTransport
         def perform(event)

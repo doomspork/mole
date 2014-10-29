@@ -11,6 +11,13 @@ module Mole
 
       subject { Mole.config }
 
+      it { is_expected.to respond_to :api_token }
+      it { is_expected.to respond_to :api_version }
+      it { is_expected.to respond_to :host }
+      it { is_expected.to respond_to :log }
+      it { is_expected.to respond_to :method }
+      it { is_expected.to respond_to :port }
+
       its(:api_token) { is_expected.to eql token }
       its(:log) { is_expected.to be_a Logger }
 
@@ -34,14 +41,30 @@ module Mole
       end
 
       context '#host' do
-        its(:host) { is_expected.to eql 'http://www.orwell.io' }
+        its(:host) { is_expected.to eql 'api.orwell.io' }
 
         context 'when overridden' do
           before do
-            Mole.config {|c| c.host = 'http://www.something.com' }
+            Mole.config {|c| c.host = 'www.something.com' }
           end
 
-          its(:host) { is_expected.to eql 'http://www.something.com' }
+          its(:host) { is_expected.to eql 'www.something.com' }
+        end
+      end
+
+      context '#method' do
+        its(:method) { is_expected.to eql :basic }
+
+        context 'when overridden' do
+          before do
+            Mole.config {|c| c.method = :mock }
+          end
+
+          after do
+            Mole.config {|c| c.method = :basic }
+          end
+
+          its(:method) { is_expected.to eql :mock }
         end
       end
 

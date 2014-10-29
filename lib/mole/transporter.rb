@@ -25,11 +25,11 @@ module Mole
     end
 
     def config_hash
-      @config_has ||= {
-        host:     Mole.config.host,
-        port:     Mole.config.port,
-        token:    Mole.config.api_token,
-        version:  Mole.config.api_version
+      {
+        api_token:    Mole.config.api_token,
+        api_version:  Mole.config.api_version,
+        host:         Mole.config.host,
+        port:         Mole.config.port
       }
     end
 
