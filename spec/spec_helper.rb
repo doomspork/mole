@@ -11,7 +11,6 @@ SimpleCov.formatters = [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCo
 SimpleCov.start do
   add_filter 'spec'
   coverage_dir 'docs/coverage'
-  minimum_coverage(95.0)
 end
 
 require 'orwell/mole'
