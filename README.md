@@ -38,7 +38,18 @@ end
 + `logger` - Override the logger Mole will use, the default uses `Logger` to stdout.
 + `method` - Set the transport used by Mole to transmit events, valid options:
 	- `:basic_http` - No frills HTTP requests via `net/http`, the default.
-	- `:sidekiq` - _In progress_
+  - `:sucker_punch` - Uses [SuckerPunch](https://github.com/brandonhilkert/sucker_punch) to asynchroniously transmit events.
+	- `:sidekiq` - Similar to `:sucker_punch` but the underlying library is [Sidekiq](https://github.com/mperham/sidekiq).
+
+_Note_: To use either `:sucker_punch` or `:sidekiq` you'll need to require them first:
+
+```ruby
+# Sidekiq
+require 'orwell/mole/transport/sidekiq'
+	
+# SuckerPunch
+require 'orwell/mole/transport/sucker_punch'
+```
 
 ## Usage
 

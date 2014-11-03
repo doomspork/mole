@@ -8,8 +8,18 @@ module Mole
     end
 
     context 'with sidekiq transport' do
+      subject { Transporter.new(:sidekiq) }
+      its(:transport) { is_expected.to be_a Transport::Sidekiq }
+    end
+
+    context 'with sucker punch transport' do
+      subject { Transporter.new(:sucker_punch) }
+      its(:transport) { is_expected.to be_a Transport::SuckerPunch }
+    end
+
+    context 'with an unknown transport' do
       it 'will be Not Implemented' do
-        expect { Transporter.new(:sidekiq) }.to raise_error NotImplementedError
+        expect { Transporter.new(:random) }.to raise_error NotImplementedError
       end
     end
 

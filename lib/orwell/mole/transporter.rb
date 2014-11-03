@@ -15,13 +15,17 @@ module Mole
     private
 
     def lookup(transport)
-      case transport
-      when :basic_http
-        Transport::BasicHttp.new(config_hash)
-      when :sidekiq
-        raise NotImplementedError
-      else nil
-      end
+      transport = case transport
+                  when :basic_http
+                    Transport::BasicHttp
+                  when :sucker_punch
+                    Transport::SuckerPunch
+                  when :sidekiq
+                    Transport::Sidekiq
+                  else
+                    raise NotImplementedError
+                  end
+      transport.new(config_hash)
     end
 
     def config_hash
