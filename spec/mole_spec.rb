@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Mole do
   before do
     Mole.config.reset!
-    event   = Mole::Event.new(:test, :event, :user, foo: 'bar')
+    event   = Mole::Event.new(:event, foo: 'bar')
     body    = JSON.generate(event.to_h)
     headers = { 'ACCEPT' => 'application/vnd.orwell.api.json; version=0.1.0', 'ORWELL-TOKEN' => 'abc' }
 
@@ -14,21 +14,21 @@ describe Mole do
     Mole.config { |c| c.api_token = 'abc' }
   end
 
-  describe '.channel' do
-    subject { Mole.channel(:test) }
-
-    it 'will open a named channel' do
-      result = subject.record(:event, :user, foo: 'bar')
-      expect(result).to be_truthy
+  describe '.record' do
+    it 'will transmit the event to Orwell' do
+      any_instance_of(Mole::Client) do |client|
+        mock(client).record(:event, foo: 'bar')
+      end
+      Mole.record(:event, foo: 'bar')
     end
   end
 
   describe '.track' do
-    subject { Mole.track(:user, :test) }
-
-    it 'will open a named channel' do
-      result = subject.record(:event, foo: 'bar')
-      expect(result).to be_truthy
+    it 'will be an alias to .record' do
+      any_instance_of(Mole::Client) do |client|
+        mock(client).record(:event, foo: 'bar')
+      end
+      Mole.track(:event, foo: 'bar')
     end
   end
 end

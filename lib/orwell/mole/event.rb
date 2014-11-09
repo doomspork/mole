@@ -1,20 +1,18 @@
 module Mole
   class Event
-    attr_accessor :channel, :event, :identifier, :details
+    attr_accessor :event, :details, :timestamp
 
-    def initialize(channel, event, identifier, details = {})
-      @channel    = channel
+    def initialize(event, details = {})
       @event      = event
-      @identifier = identifier
       @details    = details
+      @timestamp  = Time.now.utc.to_i
     end
 
     def to_h
       {
-        channel:     channel,
-        event:       event,
-        identifier:  identifier,
-        details:     details
+        event:   event,
+        details: details,
+        timestamp: timestamp
       }
     end
   end

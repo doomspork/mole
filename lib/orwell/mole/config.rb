@@ -4,7 +4,7 @@ module Mole
   class Config
     DEFAULT_HOST = 'api.orwell.io'
     DEFAULT_POST = 80
-    DEFAULT_API_VERSION = '0.1.0'
+    DEFAULT_API_VERSION = '0.4'
 
     attr_accessor :api_token
     attr_writer  :api_version, :host, :logger, :method, :port

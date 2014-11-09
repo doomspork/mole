@@ -7,7 +7,7 @@ module Mole
     describe Sidekiq do
       ::Sidekiq::Testing.inline!
 
-      let(:event)     { Event.new('channel', 'event', 'identifier') }
+      let(:event)     { Event.new('event') }
       let(:host)      { 'test.orwell.io' }
       let(:port)      { 8080 }
       let(:token)     { 'abc' }

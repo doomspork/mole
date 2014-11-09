@@ -5,7 +5,7 @@ require 'orwell/mole/transport/sucker_punch'
 module Mole
   module Transport
     describe SuckerPunch do
-      let(:event)     { Event.new('channel', 'event', 'identifier') }
+      let(:event)     { Event.new('event') }
       let(:host)      { 'test.orwell.io' }
       let(:port)      { 8080 }
       let(:token)     { 'abc' }

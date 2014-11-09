@@ -1,33 +1,15 @@
 module Mole
   class Client
 
-    attr_reader :channel, :identifier, :transporter
+    attr_reader :transporter
 
-    def initialize(channel, transporter)
-      @channel     = channel
+    def initialize(transporter)
       @transporter = transporter
     end
 
-    def identify(id)
-      @identifier = id
-    end
-
-    def record(event, *args)
-      identifier, details = expand_args(args)
-      event = Event.new(channel, event, identifier, details)
+    def record(event, details = {})
+      event = Event.new(event, details)
       @transporter.perform(event)
-    end
-
-    private
-
-    def expand_args(args)
-      id, details = args
-      if id.is_a?(Hash)
-        details = id
-        id      = nil
-      end
-      id = @identifier unless id
-      [id, details]
     end
   end
 end

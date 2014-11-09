@@ -11,20 +11,18 @@ module Mole
     @config
   end
 
-  def self.channel(name)
-    new_client(name)
+  def self.record(event, *details)
+    client.record(event, *details)
   end
 
-  def self.track(identifier, name)
-    client = new_client(name)
-    client.identify(identifier)
-    client
+  class << self
+    alias_method :track, :record
   end
 
   private
 
-  def self.new_client(channel)
-    Client.new(channel, self.transporter)
+  def self.client
+    @client ||= Client.new(transporter)
   end
 
   def self.transporter

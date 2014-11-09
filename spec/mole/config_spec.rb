@@ -29,7 +29,7 @@ module Mole
       end
 
       context '#api_version' do
-        its(:api_version) { is_expected.to eql '0.1.0' }
+        its(:api_version) { is_expected.to eql '0.4' }
 
         context 'when overridden' do
           before do

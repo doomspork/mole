@@ -3,7 +3,7 @@ require 'spec_helper'
 module Mole
   module Transport
     describe BasicHttp do
-      let(:event)   { Event.new('channel', 'event', 'identifier') }
+      let(:event)   { Event.new('event') }
       let(:host)    { 'test.orwell.io' }
       let(:plain)   { BasicHttp.new(api_token: token, api_version: version, host: host, port: port) }
       let(:port)    { 8080 }
