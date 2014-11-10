@@ -7,7 +7,7 @@ module Mole
     DEFAULT_API_VERSION = '0.4'
 
     attr_accessor :api_token
-    attr_writer  :api_version, :host, :logger, :method, :port
+    attr_writer  :api_version, :host, :method, :port
 
     def api_token
       raise MissingApiTokenError unless @api_token
@@ -22,10 +22,6 @@ module Mole
       @host ||= DEFAULT_HOST
     end
 
-    def logger
-      @logger ||= default_logger
-    end
-
     def method
       @method ||= :basic_http
     end
@@ -35,18 +31,7 @@ module Mole
     end
 
     def reset!
-      @api_token, @api_version, @host, @logger, @method, @port = nil
+      @api_token, @api_version, @host, @method, @port = nil
     end
-
-    private
-
-    def default_logger
-      unless @default_logger
-        require 'logger'
-        @default_logger = Logger.new(nil)
-      end
-      @default_logger
-    end
-
   end
 end
