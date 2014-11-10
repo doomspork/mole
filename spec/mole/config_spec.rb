@@ -14,12 +14,10 @@ module Mole
       it { is_expected.to respond_to :api_token }
       it { is_expected.to respond_to :api_version }
       it { is_expected.to respond_to :host }
-      it { is_expected.to respond_to :logger }
       it { is_expected.to respond_to :method }
       it { is_expected.to respond_to :port }
 
       its(:api_token) { is_expected.to eql token }
-      its(:logger) { is_expected.to be_a Logger }
 
       context 'when missing API Token' do
         let(:token) { nil }

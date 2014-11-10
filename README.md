@@ -29,13 +29,12 @@ Currently there is only one required configuration option: `api_token`.
 ```ruby
 Mole.config do |c|
   c.api_token = 'your orwell api token'
-  c.logger    = Log4r::Logger[Rails.env]
+  c.method = :sidekiq
 end
 ```
 
 ### Options
 + `api_token` - The application's API token provided by Orwell.
-+ `logger` - Override the logger Mole will use, the default uses `Logger` to stdout.
 + `method` - Set the transport used by Mole to transmit events, valid options:
 	- `:basic_http` - No frills HTTP requests via `net/http`, the default.
 	- `:sucker_punch` - Uses [SuckerPunch](https://github.com/brandonhilkert/sucker_punch) to asynchroniously transmit events.
