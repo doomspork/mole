@@ -14,31 +14,14 @@ module Mole
     end
 
     let(:transport) { MockTransporter.new }
-    let(:client) { Client.new(:test, transport) }
-
-    describe '#identify' do
-      before { client.identify(:user) }
-
-      it 'will identify all events' do
-        client.record(:event, foo: 'bar')
-        events = transport.events
-        expect(events.size).to eq 1
-        expect(events.first.identifier).to eq :user
-      end
-
-    end
+    let(:client) { Client.new(transport) }
 
     describe '#record' do
-      before { client.identify(:user) }
-
-      context 'with identifier' do
-        before { client.record(:event, :guest) }
-
-        it 'override the channel identifier' do
-          event = transport.events.first
-          expect(event.event).to eq :event
-          expect(event.identifier).to eq :guest
-        end
+      before { client.record(:event, foo: 'bar') }
+      it 'will transport the event to Orwell' do
+        event = transport.events.first
+        expect(event.event).to eq :event
+        expect(event.details).to include foo: 'bar'
       end
     end
   end

@@ -4,6 +4,8 @@ require 'net/http'
 module Mole
   module Transport
     class BasicHttp
+      CONTENT_TYPE = 'application/vnd.orwell.api.json'
+
       attr_reader :host, :port, :token, :version
 
       def initialize(opts = {})
@@ -37,11 +39,11 @@ module Mole
 
       def headers
         {
-          'accept'       => "application/vnd.orwell.api.json; version=#{version}",
-          'orwell_token' => token
+          'Accept'       => "#{CONTENT_TYPE}; version=#{version}",
+          'Content-Type' => CONTENT_TYPE,
+          'Orwell-Token' => token
         }
       end
-
     end
   end
 end

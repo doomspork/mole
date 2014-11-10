@@ -4,7 +4,7 @@ module Mole
   class Config
     DEFAULT_HOST = 'api.orwell.io'
     DEFAULT_POST = 80
-    DEFAULT_API_VERSION = '0.1.0'
+    DEFAULT_API_VERSION = '0.4'
 
     attr_accessor :api_token
     attr_writer  :api_version, :host, :logger, :method, :port
@@ -15,23 +15,23 @@ module Mole
     end
 
     def api_version
-      @api_version || DEFAULT_API_VERSION
+      @api_version ||= DEFAULT_API_VERSION
     end
 
     def host
-      @host || DEFAULT_HOST
+      @host ||= DEFAULT_HOST
     end
 
-    def log
-      @logger || default_logger
+    def logger
+      @logger ||= default_logger
     end
 
     def method
-      @method || :basic_http
+      @method ||= :basic_http
     end
 
     def port
-      @port || DEFAULT_POST
+      @port ||= DEFAULT_POST
     end
 
     def reset!
@@ -43,7 +43,7 @@ module Mole
     def default_logger
       unless @default_logger
         require 'logger'
-        @default_logger = Logger.new(STDOUT)
+        @default_logger = Logger.new(nil)
       end
       @default_logger
     end

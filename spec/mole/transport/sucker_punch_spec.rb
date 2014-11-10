@@ -5,7 +5,7 @@ require 'orwell/mole/transport/sucker_punch'
 module Mole
   module Transport
     describe SuckerPunch do
-      let(:event)     { Event.new('channel', 'event', 'identifier') }
+      let(:event)     { Event.new('event') }
       let(:host)      { 'test.orwell.io' }
       let(:port)      { 8080 }
       let(:token)     { 'abc' }
@@ -15,7 +15,7 @@ module Mole
       describe '#perform' do
         before do
           body    = JSON.generate(event.to_h)
-          headers = { 'ACCEPT' => "application/vnd.orwell.api.json; version=#{version}", 'ORWELL-TOKEN' => token }
+          headers = { 'ACCEPT' => "application/vnd.orwell.api.json; version=#{version}", 'CONTENT-TYPE' => 'application/vnd.orwell.api.json', 'ORWELL-TOKEN' => token }
 
           stub_request(:post, "#{host}:#{port}/events")
             .with(body: body, headers: headers)

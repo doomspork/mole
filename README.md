@@ -46,37 +46,18 @@ _Note_: To use either `:sucker_punch` or `:sidekiq` you'll need to require them 
 ```ruby
 # Sidekiq
 require 'orwell/mole/transport/sidekiq'
-	
+
 # SuckerPunch
 require 'orwell/mole/transport/sucker_punch'
 ```
 
 ## Usage
 
-To create a channel for a specific user's actions, add the following line to the beginnging of your code:
+To record an event all we need to do is:
 
 ```ruby
-@channel = Mole.track(@user.email, :accounts)
+Mole.record(:new_tweet, tweet: '...', timestamp: '...')
 ```
-
-Now to record an event on this channel we use:
-
-```ruby
-@channel.record(:new_tweet, tweet: '...', timestamp: '...')
-```
-
-Alternatively it may be necessary for a channel to remain open where individual events will be tagged with differing identifiers, to create one of these channels we use:
-
-```ruby
-@channel = Mole.channel(:accounts)
-```
-
-When we record events on one of these channels it's required that an identifier is provided as second parameter followed by any additional details:
-
-```ruby
-@channel.record(:new_account, params[:email], params)
-```
-
 
 ## Contributing
 
