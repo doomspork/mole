@@ -22,13 +22,4 @@ describe Mole do
       Mole.record(:event, foo: 'bar')
     end
   end
-
-  describe '.track' do
-    it 'will be an alias to .record' do
-      any_instance_of(Mole::Client) do |client|
-        mock(client).record(:event, foo: 'bar')
-      end
-      Mole.track(:event, foo: 'bar')
-    end
-  end
 end

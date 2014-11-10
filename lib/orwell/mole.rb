@@ -5,27 +5,24 @@ require 'orwell/mole/transporter'
 require 'orwell/mole/client'
 
 module Mole
+  extend SingleForwardable
+
   def self.config
     @config ||= Config.new
     yield @config if block_given?
     @config
   end
 
-  def self.record(event, *details)
-    client.record(event, *details)
-  end
-
-  class << self
-    alias_method :track, :record
-  end
+  def_delegators :config, :logger
+  def_delegators :client, :record
 
   private
 
   def self.client
-    @client ||= Client.new(transporter)
+    @client ||= Client.new(new_transporter)
   end
 
-  def self.transporter
-    @transporter ||= Transporter.new(config.method)
+  def self.new_transporter
+    Transporter.new(config.method)
   end
 end
