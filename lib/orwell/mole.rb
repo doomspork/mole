@@ -14,15 +14,15 @@ module Mole
   end
 
   def_delegators :config, :logger
-  def_delegators :client, :record
+  def_delegators :client, :record, :recordings
 
   private
 
   def self.client
-    @client ||= Client.new(new_transporter)
+    @client ||= Client.new(transporter)
   end
 
-  def self.new_transporter
-    Transporter.new(config.method)
+  def self.transporter
+    @transporter ||= Transporter.new(config.method)
   end
 end
