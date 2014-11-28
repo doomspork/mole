@@ -15,23 +15,19 @@ module Mole
     end
 
     def api_version
-      @api_version ||= DEFAULT_API_VERSION
+      @api_version || DEFAULT_API_VERSION
     end
 
     def host
-      @host ||= DEFAULT_HOST
+      @host || DEFAULT_HOST
     end
 
     def method
-      @method ||= :basic_http
+      @method || :basic_http
     end
 
     def port
-      @port ||= DEFAULT_POST
-    end
-
-    def reset!
-      @api_token, @api_version, @host, @method, @port = nil
+      @port || DEFAULT_POST
     end
   end
 end
