@@ -5,6 +5,8 @@ require 'simplecov'
 require 'rspec/its'
 require 'rr'
 require 'webmock/rspec'
+require 'pry'
+require 'pry-byebug'
 
 SimpleCov.formatters = [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter]
 
@@ -14,6 +16,7 @@ SimpleCov.start do
 end
 
 require 'orwell/mole'
+require 'orwell/mole/testing'
 
 Dir['spec/support/**/*.rb'].each { |f| require f }
 
