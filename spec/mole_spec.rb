@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Mole do
   before do
-    Mole.config.reset!
     event   = Mole::Event.new(:event, foo: 'bar')
     body    = JSON.generate(event.to_h)
     headers = { 'ACCEPT' => 'application/vnd.orwell.api.json; version=0.1.0', 'ORWELL-TOKEN' => 'abc' }

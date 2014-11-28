@@ -24,24 +24,18 @@ module Mole
     end
 
     describe '#perform' do
-      class MockTransport
-        def perform(event)
-          # Do Nothing
-        end
-      end
-
-      let(:transport) { MockTransport.new }
+      let(:event) { Event.new(:test) }
+      let(:transport) { Transport::Mock.new }
 
       before do
         any_instance_of(Transporter) do |klz|
           stub(klz).lookup(anything) { transport }
         end
-        mock(transport).perform(anything) { 'delegated' }
       end
 
-      subject { Transporter.new(:mock).perform(nil) }
+      subject { Transporter.new(:mock).perform(event) }
 
-      it { is_expected.to eql 'delegated' }
+      it { is_expected.to eql event }
     end
   end
 end
