@@ -60,7 +60,7 @@ Mole.record(:new_tweet, tweet: '...', timestamp: '...')
 
 ## Contributing
 
-Feedback and fixes are always welcome.  Please make use of [Issues](https://github.com/doomspork/autocomplete-me/issues) and [Pull Requests](https://github.com/doomspork/autocomplete-me/pulls), all code should have test coverage.
+Feedback and fixes are always welcome.  Please make use of [Issues](https://github.com/doomspork/mole/issues) and [Pull Requests](https://github.com/doomspork/mole/pulls), all code should have test coverage.
 
 ## Author/Contact
 
