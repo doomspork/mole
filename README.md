@@ -1,6 +1,6 @@
 # Mole
 
-Easily send events to Orwell from your Ruby applications.
+Moles are responsible for keeping Orwell informed of activity within your applications.
 
 [![Gem Version](https://badge.fury.io/rb/orwell-mole.png)](https://rubygems.org/gems/orwell-mole) [![Build Status](https://travis-ci.org/doomspork/mole.svg?branch=master)](https://travis-ci.org/doomspork/mole) [![Code Climate](https://codeclimate.com/github/doomspork/mole/badges/gpa.svg)](https://codeclimate.com/github/doomspork/mole) [![Coverage Status](https://coveralls.io/repos/doomspork/mole/badge.png?branch=master)](https://coveralls.io/r/doomspork/mole?branch=master) [![Dependency Status](https://gemnasium.com/doomspork/mole.svg)](https://gemnasium.com/doomspork/mole)
 
@@ -10,21 +10,13 @@ Add this line to your application's Gemfile:
 
 	gem 'orwell-mole', require: 'orwell/mole'
 
-And then execute:
-
-	$ bundle install
-
-Or install it yourself as:
-
-	$ gem install orwell-mole
-
 And require it:
 
 	require 'orwell/mole'
 
 ## Configuration
 
-Currently there is only one required configuration option: `api_token`.
+Currently the only required configuration option is: `api_token`.
 
 ```ruby
 Mole.config do |c|
@@ -34,13 +26,13 @@ end
 ```
 
 ### Options
-+ `api_token` - The application's API token provided by Orwell.
-+ `method` - Set the transport used by Mole to transmit events, valid options:
++ `api_token` - The API token for the given Orwell application.
++ `method` - Transport mechanism used by Mole to send events:
 	- `:basic_http` - No frills HTTP requests via `net/http`, the default.
-	- `:sucker_punch` - Uses [SuckerPunch](https://github.com/brandonhilkert/sucker_punch) to asynchroniously transmit events.
-	- `:sidekiq` - Similar to `:sucker_punch` but the underlying library is [Sidekiq](https://github.com/mperham/sidekiq).
+	- `:sucker_punch` - Asynchronious transmission via [SuckerPunch](https://github.com/brandonhilkert/sucker_punch).
+	- `:sidekiq` - Asynchronious transmission via [Sidekiq](https://github.com/mperham/sidekiq).
 
-_Note_: To use either `:sucker_punch` or `:sidekiq` you'll need to require them first:
+In order to use either `:sucker_punch` or `:sidekiq` you'll first need to require them:
 
 ```ruby
 # Sidekiq
@@ -52,7 +44,7 @@ require 'orwell/mole/transport/sucker_punch'
 
 ## Usage
 
-To record an event all we need to do is:
+Once configured sending events is easy:
 
 ```ruby
 Mole.record(:new_tweet, tweet: '...', timestamp: '...')
