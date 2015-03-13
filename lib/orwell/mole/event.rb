@@ -1,17 +1,17 @@
 module Mole
   class Event
-    attr_accessor :event, :details, :timestamp
+    attr_accessor :name, :data, :timestamp
 
-    def initialize(event, details = {})
-      @event      = event
-      @details    = details
-      @timestamp  = Time.now.utc.to_i
+    def initialize(name, data = {})
+      @name      = name
+      @data      = data
+      @timestamp = Time.now.utc.to_i
     end
 
     def to_h
       {
-        event:   event,
-        details: details,
+        name:   name,
+        data: data,
         timestamp: timestamp
       }
     end

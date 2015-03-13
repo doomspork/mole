@@ -7,8 +7,8 @@ module Mole
 
       it 'will transport the event to Orwell' do
         event = Mole.recordings.first
-        expect(event.event).to eq :event
-        expect(event.details).to include foo: 'bar'
+        expect(event.name).to eq :event
+        expect(event.data).to include foo: 'bar'
       end
     end
 
