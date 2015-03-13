@@ -27,7 +27,7 @@ module Mole
       end
 
       context '#api_version' do
-        its(:api_version) { is_expected.to eql '0.4' }
+        its(:api_version) { is_expected.to eql '1.0' }
 
         context 'when overridden' do
           before do
@@ -67,7 +67,7 @@ module Mole
       end
 
       context '#port' do
-        its(:port) { is_expected.to eql 80 }
+        its(:port) { is_expected.to eql 443 }
 
         context 'when overridden' do
           before do
