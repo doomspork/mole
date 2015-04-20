@@ -3,8 +3,8 @@ require 'orwell/mole/errors/missing_api_token_error'
 module Mole
   class Config
     DEFAULT_HOST = 'api.orwell.io'
-    DEFAULT_POST = 80
-    DEFAULT_API_VERSION = '0.4'
+    DEFAULT_POST = 443
+    DEFAULT_API_VERSION = '1.0'
 
     attr_accessor :api_token
     attr_writer  :api_version, :host, :method, :port

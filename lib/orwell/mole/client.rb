@@ -1,6 +1,5 @@
 module Mole
   class Client
-
     attr_reader :transporter
     attr_reader :recordings
 
@@ -9,8 +8,8 @@ module Mole
       @recordings = []
     end
 
-    def record(event, details = {})
-      event = Event.new(event, details)
+    def record(name, data = {})
+      event = Event.new(name, data)
       @recordings << event
       transporter.perform(event)
     end
